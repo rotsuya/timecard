@@ -286,7 +286,9 @@ var timecard = (function() {
                 if (!checkIfInstalled.result) {
                     // Not installed.
                     _elem.installFirefoxApp.style.display = 'block';
-                    _elem.installFirefoxApp.addEventListener('click', function() {
+                    _elem.installFirefoxApp.addEventListener('click', function(event) {
+                        event.preventDefault();
+
                         var url = location.href;
 
                         // If you want to enable Packaged App, uncomment these lines.
