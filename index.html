@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<!--html manifest="cache.appcache"-->
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <link rel="stylesheet" type="text/css" href="css/timecard.css" />
+    <link rel="stylesheet" type="text/css" href="css/animation.css" />
+    <title>Time Card</title>
+    <script src="js/hammer.js"></script>
+</head>
+<body>
+<div id="cardContainer">
+    <div id="cardWrapper">
+        <div id="card">
+            <div id="list"></div>
+        </div>
+    </div>
+</div>
+<div id="recorder">
+    <button id="arrive">Arrive</button>
+    <button id="leave">Leave</button>
+    <div id="clock">
+        <div id="date"></div>
+        <div id="time"></div>
+        <div id="delay"></div>
+    </div>
+</div>
+<div id="installFirefoxApp">Install</div>
+<script type="text/javascript" src="getjst.js/getjst.js"></script>
+<script type="text/javascript" src="js/timecard.js"></script>
+</body>
+</html>

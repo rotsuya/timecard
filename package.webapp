@@ -1,0 +1,9 @@
+{
+    "name": "Time Card",
+    "package_path" : "http://rotsuya.github.com/timecard/timecard.zip",
+    "version": "1",
+    "developer": {
+        "name": "Ryosuke Otsuya",
+        "url": "http://r.otsuya.co/"
+    }
+}

@@ -1,0 +1,161 @@
+html {
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: Helvetica, sans-serif;
+  background-image: url(../images/linen@2x.png);
+  -webkit-background-size: 500px 500px;
+  -moz-background-size: 500px 500px;
+  background-size: 500px 500px;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+#cardContainer {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  z-index: 0;
+}
+#cardWrapper {
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+}
+#card {
+  margin: 8px auto;
+  padding: 8px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 50px 0px, rgba(0, 0, 0, 0.2) 0px 0px 5px 0px;
+  background: #ffffff -webkit-radial-gradient(center, farthest-corner, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.024) 50%, rgba(0, 0, 0, 0.12));
+  background: #ffffff -moz-radial-gradient(center, farthest-corner, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.024) 50%, rgba(0, 0, 0, 0.12));
+  width: 240px;
+}
+.list-table {
+  border-collapse: collapse;
+  width: 100%;
+  vertical-align: middle;
+}
+.list-table h2 {
+  margin: 0;
+  width: 50%;
+  float: right;
+  color: #333333;
+  font-size: 14px;
+  line-height: 16px;
+  height: 16px;
+  font-family: Courier, monospace;
+  text-shadow: #ffffff 0 2px 1px, rgba(102, 102, 102, 0.25) 0 -1px 0;
+}
+.list-table th {
+  color: #1dc9c9;
+  font-size: 12px;
+  line-height: 16px;
+  border: 1px solid #1dc9c9;
+}
+.list-table td {
+  border: 1px solid #1dc9c9;
+  font-family: Courier, monospace;
+  color: #333333;
+  font-size: 14px;
+  line-height: 16px;
+  text-align: center;
+  text-shadow: #ffffff 0 2px 1px, rgba(102, 102, 102, 0.25) 0 -1px 0;
+  font-weight: bold;
+}
+.date {
+  width: 34px;
+}
+.day {
+  width: 29px;
+}
+.arrive {
+  width: 82px;
+}
+.leave {
+  width: 82px;
+}
+#recorder {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 46px;
+  /* 30 + 8 + 8 */
+
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid black;
+  text-align: center;
+  background: #191919 -webkit-linear-gradient(top, #323232, #191919 49%, #000000 51%, #000000);
+  background: #191919 -moz-linear-gradient(top, #323232, #191919 49%, #000000 51%, #000000);
+  box-shadow: inset 0px 1px 1px rgba(255, 255, 255, 0.3), 0px 0px 8px 0px rgba(0, 0, 0, 0.8);
+  z-index: 10;
+}
+.buttonContainer {
+  text-align: center;
+}
+button {
+  margin: 8px;
+  padding: 0;
+  font-size: 16px;
+  line-height: 30px;
+  font-family: sans-serif;
+  height: 30px;
+  width: 88px;
+  border: 0;
+  font-weight: bold;
+  color: #ffffff;
+  border-radius: 4px;
+  background-color: transparent;
+  box-shadow: inset rgba(255, 255, 255, 0.05) 0 -1px 2px 0, inset rgba(0, 0, 0, 0.05) 0 1px 2px 0;
+  background: rgba(255, 255, 255, 0.16);
+  text-shadow: rgba(255, 255, 255, 0.2) 0 1px 0, #000000 0.2 -1px 0;
+  cursor: pointer;
+  -webkit-transition: color 0.25s linear 0s;
+  -moz-transition: color 0.25s linear 0s;
+}
+#arrive {
+  float: left;
+}
+#leave {
+  float: right;
+}
+#clock {
+  color: #9FDBE6;
+  text-shadow: #9FDBE6 0 0 10px;
+  /* PANTONE 2975C */
+
+  text-align: center;
+}
+#date {
+  margin: 8px 0 0 0;
+  font-size: 14px;
+  line-height: 14px;
+  height: 14px;
+}
+#time {
+  font-size: 16px;
+  line-height: 16px;
+  height: 16px;
+}
+#delay {
+  text-align: center;
+  display: none;
+}
+#installFirefoxApp {
+  display: none;
+  position: absolute;
+  right: 8px;
+  top: 8px;
+  border-radius: 12px;
+  color: #ffffff;
+  background: #3d3d3d -webkit-linear-gradient(top, #525252, #3d3d3d 49%, #282828 51%, #282828);
+  background: #3d3d3d -moz-linear-gradient(top, #525252, #3d3d3d 49%, #282828 51%, #282828);
+  font-size: 12px;
+  line-height: 12px;
+  padding: 6px 8px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 50px 0px, rgba(0, 0, 0, 0.2) 0px 0px 5px 0px, inset #c0c0c0 0px 0px 0px 1px, inset #ffffff 0px 0px 0px 3px;
+  cursor: pointer;
+}

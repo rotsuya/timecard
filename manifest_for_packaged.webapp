@@ -1,0 +1,19 @@
+{
+    "version": "1",
+    "name": "Time Card",
+    "launch_path": "/index.html",
+    "description": "Time Card application.",
+    "icons": {
+        "16": "/images/logo16.png",
+        "32": "/images/logo32.png",
+        "48": "/images/logo48.png",
+        "64": "/images/logo64.png",
+        "128": "images/logo128.png"
+    },
+    "developer": {
+        "name": "Ryosuke Otsuya",
+        "url": "http://r.otsuya.co/"
+    },
+    "installs_allowed_from": ["*"],
+    "default_locale": "ja"
+}
