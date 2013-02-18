@@ -119,10 +119,8 @@ var timecard = (function() {
      * @type {Boolean}
      * @private
      */
-    var _isFirefoxOs
-        = (_ua.indexOf('firefox') !== -1)       // Firefox browser
-        && (_ua.indexOf('mobile') !== -1)       // and mobile browser
-        && (_ua.indexOf('android') === -1);     // and not android
+    var _canInstallPackagedApps
+        = !!navigator.mozApps && !!navigator.mozApps.installPackage;
 
     /**
      * Stamp the time.
@@ -293,7 +291,7 @@ var timecard = (function() {
 
                         // If you want to enable Packaged App, uncomment these lines.
 
-                        if (_isFirefoxOs && confirm('Do you install as “Packaged App”?')) {
+                        if (_canInstallPackagedApps && confirm('Do you install as “Packaged App”?')) {
                           var manifestUrl = url.substring(0, url.lastIndexOf('/')) + '/package.webapp';
                           var install = navigator.mozApps.installPackage(manifestUrl);
                         } else {
