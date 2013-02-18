@@ -9,13 +9,13 @@
 <table>
 <tr><th>OS</th><th>ブラウザ</th><th>対応状況</th</tr>
 <tr><td rowspan="2">iOS</td><td>Mobile Safari</td><td>Done</td></tr>
-<tr><td>Native Apps (PhoneGap, Cordova)</td><td>To Do</td></tr>
+<tr><td>Native Apps (PhoneGap)</td><td>To Do</td></tr>
 <tr><td rowspan="5">Android 4.0+</td><td>Browser</td><td>Done</td></tr>
 <tr><td>Chrome</td><td>Done</td></tr>
-<tr><td>Native Apps (PhoneGap, Cordova)</td><td>Done</td></tr>
+<tr><td>Native Apps (PhoneGap)</td><td>Done</td></tr>
 <tr><td>Firefox</td><td>To Do</td></tr>
 <tr><td>Firefox Hosted Apps</td><td>To Do</td></tr>
-<tr><td rowspan="4">Mac<td><td>Safari</td><td>Done</td></tr>
+<tr><td rowspan="4">Mac OS</td><td>Safari</td><td>Done</td></tr>
 <tr><td>Chrome</td><td>Done</td></tr>
 <tr><td>Firefox</td><td>Done</td></tr>
 <tr><td>Firefox Hosted Apps</td><td>Done</td></tr>
