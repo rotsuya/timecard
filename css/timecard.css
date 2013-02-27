@@ -34,8 +34,9 @@ body {
   width: 240px;
 }
 .list-table {
+  border: 1px solid #1dc9c9;
   border-collapse: collapse;
-  width: 100%;
+  width: 240px;
   vertical-align: middle;
 }
 .list-table h2 {
@@ -44,38 +45,42 @@ body {
   float: right;
   color: #333333;
   font-size: 14px;
-  line-height: 16px;
-  height: 16px;
+  line-height: 18px;
+  height: 18px;
   font-family: Courier, monospace;
   text-shadow: #ffffff 0 2px 1px, rgba(102, 102, 102, 0.25) 0 -1px 0;
 }
 .list-table th {
   color: #1dc9c9;
   font-size: 12px;
-  line-height: 16px;
+  line-height: 18px;
+  height: 18px;
   border: 1px solid #1dc9c9;
+  padding: 0;
 }
 .list-table td {
   border: 1px solid #1dc9c9;
   font-family: Courier, monospace;
   color: #333333;
   font-size: 14px;
-  line-height: 16px;
+  line-height: 18px;
+  height: 18px;
   text-align: center;
   text-shadow: #ffffff 0 2px 1px, rgba(102, 102, 102, 0.25) 0 -1px 0;
   font-weight: bold;
+  padding: 0;
 }
 .date {
-  width: 34px;
+  width: 36px;
 }
 .day {
-  width: 29px;
+  width: 31px;
 }
 .arrive {
-  width: 82px;
+  width: 84px;
 }
 .leave {
-  width: 82px;
+  width: 84px;
 }
 #recorder {
   position: absolute;
@@ -159,4 +164,68 @@ button {
   padding: 6px 8px;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 50px 0px, rgba(0, 0, 0, 0.2) 0px 0px 5px 0px, inset #c0c0c0 0px 0px 0px 1px, inset #ffffff 0px 0px 0px 3px;
   cursor: pointer;
+}
+#loupeWrapper {
+  display: none;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+}
+.visible {
+  display: block !important;
+}
+#loupe {
+  position: absolute;
+  left: -80px;
+  top: -103px;
+  width: 158px;
+  height: 158px;
+  border-radius: 80px;
+  border: 1px solid #ffffff;
+  background: white;
+  box-shadow: 0 1px 4px -1px #000000, inset 0 1px 3px -1px #000000;
+  overflow: hidden;
+}
+#editTime {
+  position: absolute;
+  top: 87px;
+  left: 10px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  text-align: center;
+  width: 140px;
+  height: 42px;
+  background-color: rgba(255, 255, 255, 0);
+  font-size: 28px;
+  line-height: 42px;
+  font-family: Noteworthy, Papyrus;
+  color: #5555aa;
+  -webkit-transition: background-color 0.5s linear;
+  -moz-transition: background-color 0.5s linear;
+}
+.focus {
+  background-color: rgba(255, 255, 255, 0.8) !important;
+}
+#loupeTable {
+  position: absolute;
+  left: -1px;
+  top: -29px;
+  border: 1px solid #1dc9c9;
+  border-collapse: collapse;
+  width: 160px;
+  height: 216px;
+  vertical-align: middle;
+}
+#loupeTable td {
+  border: 1px solid #1dc9c9;
+  font-family: Courier, monospace;
+  color: #333333;
+  font-size: 28px;
+  line-height: 42px;
+  height: 42px;
+  text-align: center;
+  text-shadow: #ffffff 0 2px 1px, rgba(102, 102, 102, 0.25) 0 -1px 0;
+  font-weight: bold;
+  padding: 0;
 }

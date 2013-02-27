@@ -220,25 +220,28 @@ var timecard = (function() {
         date.setDate(date.getDate() - 1);
         var lastDate = _getDateString(date).date.split('/')[2];
 
-        var html = '<table class="list-table"><thead>'
+        var html
+            = '<table class="list-table">'
+            + '<thead>'
             + '<tr><th colspan="4">Year/Month<h2>'
-            + _getDateString(date).date.split('/').splice(0,2).join('/')
-            + '</h2></th></tr>'
+                + _getDateString(date).date.split('/').splice(0,2).join('/')
+                + '</h2></th></tr>'
             + '<tr><th class="date">Date</th><th class="day">Day</th>'
-            + '<th class="arrive">Arrive</th><th class="leave">Leave</th></tr>'
-            + '</thead><tbody>';
-        var tmpDate = new Date();
-        var timeString;
+                + '<th class="arrive">Arrive</th><th class="leave">Leave</th></tr>'
+            + '</thead>'
+            + '<tbody>';
+
+        var time = '';
+
         for (var i = 1; i <= lastDate; i++) {
             date.setDate(i);
             html += '<tr><th>' + i + '</th><th>'
                 + _DAY_NAME[_locale][date.getDay()]
-                + '</th>' + '<td>';
-
+                + '</th>' + '<td class="arrive time of-' + i + '">';
             html += (_storage[_getDateString(date).date]
                 && _storage[_getDateString(date).date].arrive)
                 ? _storage[_getDateString(date).date].arrive : '&nbsp;';
-            html += '</td><td>';
+            html += '</td><td class="leave time of-' + i + '">';
             html += (_storage[_getDateString(date).date]
                 && _storage[_getDateString(date).date].leave)
                 ? _storage[_getDateString(date).date].leave : '&nbsp;';
@@ -274,6 +277,20 @@ var timecard = (function() {
             _date.setTime(_date.getTime() + _storage.delay );
         }
         _show(_monthAfter);
+
+        var _editStart = function(event) {
+            document.getElementById('editTime').value = event.target.innerHTML;
+            document.getElementById('loupeWrapper').className = 'visible';
+        };
+        document.getElementById('list').addEventListener('click', _editStart, false);
+        document.getElementById('editTime').addEventListener('keydown', function() {
+            if (this.value === '') {
+                this.className = '';
+            } else {
+                this.className = 'focus';
+            }
+        }, false);
+
         _interval = setInterval(_updateClock, 1000);
 
         // Check Apps API.
