@@ -496,7 +496,6 @@ var timecard = (function() {
             return;
         }
         event.preventDefault();
-        alert(event.gesture.angle);
         _monthAfter = _monthAfter + ((direction === 'forward') ? 1 : -1);
         _slide(direction);
     };
