@@ -91,7 +91,7 @@ var timecard = (function() {
         loupeWrapper: document.getElementById('loupeWrapper'),
         grayOut: document.getElementById('grayOut'),
         list: document.getElementById('list')
-};
+    };
 
     /**
      * User Agent.
@@ -250,10 +250,10 @@ var timecard = (function() {
             = '<table class="list-table">'
             + '<thead>'
             + '<tr><th colspan="4">Year/Month<h2>'
-                + _getDateString(date).date.split('/').splice(0,2).join('/')
-                + '</h2></th></tr>'
+            + _getDateString(date).date.split('/').splice(0,2).join('/')
+            + '</h2></th></tr>'
             + '<tr><th id="headerDate">Date</th><th id="headerDay">Day</th>'
-                + '<th id="headerArrive">Arrive</th><th id="headerLeave">Leave</th></tr>'
+            + '<th id="headerArrive">Arrive</th><th id="headerLeave">Leave</th></tr>'
             + '</thead>'
             + '<tbody>';
 
@@ -268,11 +268,11 @@ var timecard = (function() {
             dateString = _getDateString(date).date;
             arrive
                 = (_storage[dateString]
-                    && (_storage[dateString].arriveModified || _storage[dateString].arrive))
+                && (_storage[dateString].arriveModified || _storage[dateString].arrive))
                 || '&nbsp;';
             leave
                 = (_storage[dateString]
-                    && (_storage[dateString].leaveModified || _storage[dateString].leave))
+                && (_storage[dateString].leaveModified || _storage[dateString].leave))
                 || '&nbsp;';
             isArriveModified
                 = !!(_storage[dateString] && _storage[dateString].arriveModified);
@@ -282,11 +282,11 @@ var timecard = (function() {
                 + '<th>' + i + '</th>'
                 + '<th>' + _DAY_NAME[_locale][date.getDay()] + '</th>'
                 + '<td class="time' + (isArriveModified ? ' modified' : '')
-                    + '" id="arriveTimeOf' + i + '" data-date="' + dateString
-                    + '" data-arrive-or-leave="arrive">' + arrive + '</td>'
+                + '" id="arriveTimeOf' + i + '" data-date="' + dateString
+                + '" data-arrive-or-leave="arrive">' + arrive + '</td>'
                 + '<td class="time' + (isLeaveModified ? ' modified' : '')
-                    + '" id="leaveTimeOf' + i + '" data-date="' + dateString
-                    +'" data-arrive-or-leave="leave">' + leave + '</td>'
+                + '" id="leaveTimeOf' + i + '" data-date="' + dateString
+                +'" data-arrive-or-leave="leave">' + leave + '</td>'
                 + '</tr>';
         }
         html += '</tbody></table>';
@@ -439,8 +439,8 @@ var timecard = (function() {
                         // If you want to enable Packaged App, uncomment these lines.
 
                         if (_canInstallPackagedApps && confirm('Do you install as “Packaged App”?')) {
-                          var manifestUrl = url.substring(0, url.lastIndexOf('/')) + '/package.webapp';
-                          var install = navigator.mozApps.installPackage(manifestUrl);
+                            var manifestUrl = url.substring(0, url.lastIndexOf('/')) + '/package.webapp';
+                            var install = navigator.mozApps.installPackage(manifestUrl);
                         } else {
                             alert('Installing as “Hosted App”.');
                             var manifestUrl = url.substring(0, url.lastIndexOf('/')) + '/manifest.webapp';
@@ -484,17 +484,19 @@ var timecard = (function() {
             _isDragging = false;
             return;
         }
-        if (event.distance < 20) {
+        if (!(event.gesture.distance > 50)) {
             return;
         }
         var direction;
-        if (event.angle > -60 && event.angle < 60) {
+        if (event.gesture.angle > -60 && event.gesture.angle < 60) {
             direction = 'backward';
-        } else if (event.angle < -120 || event.angle > 120) {
+        } else if (event.gesture.angle < -120 || event.gesture.angle > 120) {
             direction = 'forward';
         } else {
             return;
         }
+        event.preventDefault();
+        alert(event.gesture.angle);
         _monthAfter = _monthAfter + ((direction === 'forward') ? 1 : -1);
         _slide(direction);
     };
@@ -571,18 +573,6 @@ var timecard = (function() {
     // Run first.
 
     // Set the height of #cardContainer .
-    var _innerWidth = 0;
-    var _resize = function() {
-        if (_innerWidth === window.innerWidth) {
-            return;
-        }
-        _elem.cardContainer.style.height
-            = window.innerHeight - 47 + 'px';   // 46 + 1
-        _innerWidth = window.innerWidth;
-        console.log(window.innerWidth, window.innerHeight);
-    };
-    _resize();
-
     _elem.card.addEventListener(_animationFunction, _cardSlotEnd);
 
     document.getElementById('grayOut').addEventListener(_isTouch ? 'touchstart' : 'click', function() {
@@ -613,8 +603,6 @@ var timecard = (function() {
         }
     }
 
-    window.addEventListener('resize', _resize, false);
-
     return {
         load: load,
         dragstart: dragstart,
@@ -637,17 +625,16 @@ document.addEventListener('DOMContentLoaded', function() {
 }, false);
 
 (function() {
-    var hammer = new Hammer(document.getElementById('cardContainer'));
-    hammer.option({
-        prevent_default: true,
+    var hammer = Hammer(document.getElementById('cardContainer'), {
+        prevent_default: false,
         swipe: false,
         transform: false,
         tap: false,
         tap_double: false,
         hold: true,
         hold_timeout: 1000
-    });
-    hammer.ondragstart = timecard.dragstart;
-    hammer.ondrag = timecard.drag;
-    hammer.onhold = timecard.modifyStart;
+    })
+        .on('dragstart', timecard.dragstart)
+        .on('drag', timecard.drag)
+        .on('hold', timecard.modifyStart);
 })();

@@ -4,39 +4,39 @@
   background-size: @width @height;
 }
 .paper-texture-gradient (
-    @color: #ffffff,
-    @position: center,
-    @size: farthest-corner,
-    @color1: rgba(0, 0, 0, 0),
-    @color2: rgba(0, 0, 0, 0.024) 50%,
-    @color3: rgba(0, 0, 0, 0.12)
-  ) {
+  @color: #ffffff,
+  @position: center,
+  @size: farthest-corner,
+  @color1: rgba(0, 0, 0, 0),
+  @color2: rgba(0, 0, 0, 0.024) 50%,
+  @color3: rgba(0, 0, 0, 0.12)
+) {
   background: @color -webkit-radial-gradient(
-        @position, @size, @color1, @color2, @color3);
+    @position, @size, @color1, @color2, @color3);
   background: @color -moz-radial-gradient(
-        @position, @size, @color1, @color2, @color3);
+    @position, @size, @color1, @color2, @color3);
 }
 .black-gross-gradient (
-    @color: rgb(25, 25, 25),
-    @start-point: top,
-    @color1: rgb(50,50,50),
-    @color2: rgb(25,25,25) 49%,
-    @color3: rgb(0,0,0) 51%,
-    @color4: rgb(0,0,0)
-  ) {
+  @color: rgb(25, 25, 25),
+  @start-point: top,
+  @color1: rgb(50,50,50),
+  @color2: rgb(25,25,25) 49%,
+  @color3: rgb(0,0,0) 51%,
+  @color4: rgb(0,0,0)
+) {
   background: @color -webkit-linear-gradient(
-      @start-point, @color1, @color2, @color3, @color4);
+    @start-point, @color1, @color2, @color3, @color4);
   background: @color -moz-linear-gradient(
-      @start-point, @color1, @color2, @color3, @color4);
+    @start-point, @color1, @color2, @color3, @color4);
 }
 .transition (
-    @property: color,
-    @duration: 0.25s,
-    @timing: linear,
-    @delay: 0s
-  ) {
+  @property: color,
+  @duration: 0.25s,
+  @timing: linear,
+  @delay: 0s
+) {
   -webkit-transition: @property @duration @timing @delay;
-     -moz-transition: @property @duration @timing @delay;
+  -moz-transition: @property @duration @timing @delay;
 }
 html {
   margin: 0;
@@ -50,15 +50,12 @@ body {
 
   margin: 0;
   padding: 0;
-  overflow: hidden;
-}
-#cardContainer {
-  position: absolute;
-  top: 0;
-  width: 100%;
   overflow-x: hidden;
   overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
+}
+#cardContainer {
+  position: relative;
+  width: 100%;
   z-index: 0;
 }
 #cardWrapper {
@@ -66,7 +63,7 @@ body {
   -moz-transform-style: preserve-3d;
 }
 #card {
-  margin: 8px auto;
+  margin: 8px auto 54px;
   padding: 8px;
   box-shadow:
     rgba(0, 0, 0, 0.2) 0px 0px 50px 0px,
@@ -136,7 +133,8 @@ body {
 .sat {
 }
 #recorder {
-  position: absolute;
+  position: fixed;
+  left: 0;
   bottom: 0;
   width: 100%;
   height: 46px;   /* 30 + 8 + 8 */
@@ -229,17 +227,17 @@ button {
 }
 
 .darkgray-gross-gradient (
-      @color: rgb(61,61,61),
-      @start-point: top,
-      @color1: rgb(82,82,82),
-      @color2: rgb(61,61,61) 49%,
-      @color3: rgb(40,40,40) 51%,
-      @color4: rgb(40,40,40)
-    ) {
+  @color: rgb(61,61,61),
+  @start-point: top,
+  @color1: rgb(82,82,82),
+  @color2: rgb(61,61,61) 49%,
+  @color3: rgb(40,40,40) 51%,
+  @color4: rgb(40,40,40)
+) {
   background: @color -webkit-linear-gradient(
-      @start-point, @color1, @color2, @color3, @color4);
+    @start-point, @color1, @color2, @color3, @color4);
   background: @color -moz-linear-gradient(
-      @start-point, @color1, @color2, @color3, @color4);
+    @start-point, @color1, @color2, @color3, @color4);
 }
 
 #loupeWrapper {
@@ -314,7 +312,7 @@ button {
     height: 42px;
     text-align: center;
     text-shadow: hsla(0,0%,100%,1) 0 2px 1px,
-      hsla(0,0%,40%,0.25) 0 -1px 0;
+    hsla(0,0%,40%,0.25) 0 -1px 0;
     font-weight: bold;
     padding: 0;
   }
