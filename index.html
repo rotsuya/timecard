@@ -6,10 +6,22 @@
     <meta name="viewport" content="initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <script>
+        (function() {
+            var ua = navigator.userAgent.toLowerCase();
+            var isWebkit = (ua.indexOf('applewebkit') !== -1);
+            var isFirefox = (ua.indexOf('firefox') !== -1);
+            var html = document.getElementsByTagName('html')[0];
+            if (isWebkit) {
+                html.classList.add('webkit');
+            } else if (isFirefox) {
+                html.classList.add('firefox');
+            };
+        })();
+    </script>
     <link rel="stylesheet" type="text/css" href="css/timecard.css" />
     <link rel="stylesheet" type="text/css" href="css/animation.css" />
     <title>Time Card</title>
-    <script src="js/hammer.js"></script>
 </head>
 <body>
 <div id="cardContainer">
@@ -59,7 +71,8 @@
 </div>
 <div id="grayOut"></div>
 <a href="#installFirefoxApp" id="installFirefoxApp">Install</a>
-<script type="text/javascript" src="getjst.js/getjst.js"></script>
-<script type="text/javascript" src="js/timecard.js"></script>
+<script src="js/hammer.js"></script>
+<script src="getjst.js/getjst.js"></script>
+<script src="js/timecard.js"></script>
 </body>
 </html>

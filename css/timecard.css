@@ -1,10 +1,26 @@
+* {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+*:not(input) {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+}
 html {
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: none;
   margin: 0;
   padding: 0;
 }
+a {
+  -webkit-touch-callout: none;
+}
 body {
   font-family: Helvetica, sans-serif;
+  /*
   background-image: url(../images/linen@2x.png);
+  */
+
+  background-image: url(../images/linen.png);
   -webkit-background-size: 500px 500px;
   -moz-background-size: 500px 500px;
   background-size: 500px 500px;
@@ -16,19 +32,32 @@ body {
 #cardContainer {
   position: relative;
   width: 100%;
-  z-index: 0;
+  z-index: 1;
+  overflow-x: hidden;
 }
 #cardWrapper {
   -webkit-transform-style: preserve-3d;
   -moz-transform-style: preserve-3d;
+  -webkit-perspective: 1000px;
+  -moz-perspective: 1000px;
+  -webkit-transform: rotateX(0deg);
+  -moz-transform: rotateX(0deg);
+  overflow-y: hidden;
 }
 #card {
   margin: 8px auto 54px;
   padding: 8px;
-  box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 50px 0px, rgba(0, 0, 0, 0.2) 0px 0px 5px 0px;
-  background: #ffffff -webkit-radial-gradient(center, farthest-corner, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.024) 50%, rgba(0, 0, 0, 0.12));
-  background: #ffffff -moz-radial-gradient(center, farthest-corner, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.024) 50%, rgba(0, 0, 0, 0.12));
+  background-color: #ffffff;
+  background-image: -webkit-radial-gradient(center, farthest-corner, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.024) 50%, rgba(0, 0, 0, 0.12));
+  /*
+  background: @color -moz-radial-gradient(
+    @position, @size, @color1, @color2, @color3);
+  */
+
   width: 240px;
+}
+html.webkit #card {
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 50px 0px, rgba(0, 0, 0, 0.2) 0px 0px 5px 0px;
 }
 .list-table {
   border: 1px solid #1dc9c9;
@@ -165,6 +194,7 @@ button {
   padding: 6px 8px;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 50px 0px, rgba(0, 0, 0, 0.2) 0px 0px 5px 0px, inset #c0c0c0 0px 0px 0px 1px, inset #ffffff 0px 0px 0px 3px;
   cursor: pointer;
+  z-index: 2;
 }
 #loupeWrapper {
   display: none;

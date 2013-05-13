@@ -11,10 +11,13 @@
   @color2: rgba(0, 0, 0, 0.024) 50%,
   @color3: rgba(0, 0, 0, 0.12)
 ) {
-  background: @color -webkit-radial-gradient(
+  background-color: @color;
+  background-image: -webkit-radial-gradient(
     @position, @size, @color1, @color2, @color3);
+  /*
   background: @color -moz-radial-gradient(
     @position, @size, @color1, @color2, @color3);
+  */
 }
 .black-gross-gradient (
   @color: rgb(25, 25, 25),
@@ -38,13 +41,28 @@
   -webkit-transition: @property @duration @timing @delay;
   -moz-transition: @property @duration @timing @delay;
 }
+* {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+*:not(input) {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+}
 html {
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: none;
   margin: 0;
   padding: 0;
 }
+a {
+  -webkit-touch-callout: none;
+}
 body {
   font-family: Helvetica, sans-serif;
+  /*
   background-image: url(../images/linen@2x.png);
+  */
+  background-image: url(../images/linen.png);
 
   .background-size;
 
@@ -56,22 +74,29 @@ body {
 #cardContainer {
   position: relative;
   width: 100%;
-  z-index: 0;
+  z-index: 1;
+  overflow-x: hidden;
 }
 #cardWrapper {
   -webkit-transform-style: preserve-3d;
   -moz-transform-style: preserve-3d;
+  -webkit-perspective: 1000px;
+  -moz-perspective: 1000px;
+  -webkit-transform: rotateX(0deg);
+  -moz-transform: rotateX(0deg);
+  overflow-y: hidden;
 }
 #card {
   margin: 8px auto 54px;
   padding: 8px;
-  box-shadow:
-    rgba(0, 0, 0, 0.2) 0px 0px 50px 0px,
-    rgba(0, 0, 0, 0.2) 0px 0px 5px 0px;
-
   .paper-texture-gradient;
 
   width: 240px;
+}
+html.webkit #card {
+  box-shadow:
+  rgba(0, 0, 0, 0.2) 0px 0px 50px 0px,
+  rgba(0, 0, 0, 0.2) 0px 0px 5px 0px;
 }
 .list-table {
   border: 1px solid hsl(180,75%,45%);
@@ -224,6 +249,7 @@ button {
     inset rgb(192,192,192) 0px 0px 0px 1px,
     inset rgb(255,255,255) 0px 0px 0px 3px;
   cursor: pointer;
+  z-index: 2;
 }
 
 .darkgray-gross-gradient (
