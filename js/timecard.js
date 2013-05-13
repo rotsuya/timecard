@@ -1,5 +1,8 @@
 var timecard = (function() {
-    var VERSION = '1.0.0';
+    var _MANIFEST_URL = 'http://rotsuya.github.io/timecard/manifest.webapp';
+    var VERSION = '1.0.1';
+    var _SWIPE_ANGLE = 60;
+    var _SWIPE_DISTANCE = 50;
     var _SCHEMA_VERSION = '1.0.0';
     /**
      * Day name.
@@ -294,7 +297,7 @@ var timecard = (function() {
     };
 
     var modifyStart = function(event) {
-        var target = event.originalEvent.target;
+        var target = event.target;
         if (!target.classList.contains('time')) {
             return;
         }
@@ -426,9 +429,9 @@ var timecard = (function() {
         // Check Apps API.
         if (navigator.mozApps) {
             // Get App object.
-            var checkIfInstalled = navigator.mozApps.getSelf();
-            checkIfInstalled.addEventListener('success', function() {
-                if (!checkIfInstalled.result) {
+            var checkInstalled = navigator.mozApps.checkInstalled(_MANIFEST_URL);
+            checkInstalled.addEventListener('success', function() {
+                if (!checkInstalled.result) {
                     // Not installed.
                     _elem.installFirefoxApp.style.display = 'block';
                     _elem.installFirefoxApp.addEventListener(_isTouch ? 'ontouchstart' : 'click', function(event) {
@@ -455,7 +458,7 @@ var timecard = (function() {
                     }, false);
                 }
             }, false);
-            checkIfInstalled.addEventListener('error', function() {
+            checkInstalled.addEventListener('error', function() {
                 alert('Checking installation failed. :' + this.error.message);
             }, false);
         }
@@ -484,19 +487,20 @@ var timecard = (function() {
             _isDragging = false;
             return;
         }
-        if (!(event.gesture.distance > 50)) {
+        if (!(event.gesture.distance > _SWIPE_DISTANCE)) {
             return;
         }
         var direction;
-        if (event.gesture.angle > -60 && event.gesture.angle < 60) {
+        if (event.gesture.angle > - _SWIPE_ANGLE / 2
+            && event.gesture.angle < _SWIPE_ANGLE) {
             direction = 'backward';
-        } else if (event.gesture.angle < -120 || event.gesture.angle > 120) {
+        } else if (event.gesture.angle < _SWIPE_ANGLE / 2 - 180
+            || event.gesture.angle > 180 - _SWIPE_ANGLE / 2) {
             direction = 'forward';
         } else {
             return;
         }
-        event.preventDefault();
-        alert(event.gesture.angle);
+        console.log(event.gesture.angle);
         _monthAfter = _monthAfter + ((direction === 'forward') ? 1 : -1);
         _slide(direction);
     };
@@ -627,12 +631,13 @@ document.addEventListener('DOMContentLoaded', function() {
 (function() {
     var hammer = Hammer(document.getElementById('cardContainer'), {
         prevent_default: false,
+        drag_block_horizontal: true,
         swipe: false,
         transform: false,
         tap: false,
         tap_double: false,
         hold: true,
-        hold_timeout: 1000
+        hold_timeout: 500
     })
         .on('dragstart', timecard.dragstart)
         .on('drag', timecard.drag)
