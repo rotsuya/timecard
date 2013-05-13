@@ -500,11 +500,7 @@ var timecard = (function() {
         } else {
             return;
         }
-<<<<<<< HEAD
-        event.preventDefault();
-=======
         console.log(event.gesture.angle);
->>>>>>> master_patch_of_hammer.js
         _monthAfter = _monthAfter + ((direction === 'forward') ? 1 : -1);
         _slide(direction);
     };
